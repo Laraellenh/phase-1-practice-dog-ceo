@@ -5,7 +5,7 @@ getData()
 function getData() {
     // fetch
     fetch(imgUrl)
-    // /parse
+        // /parse
         .then(r => r.json())
         // make an object, 
         .then(dataObject => {
@@ -19,3 +19,29 @@ function getData() {
             })
         })
 }
+const breedUrl = 'https://dog.ceo/api/breeds/list/all'
+getBreedData()
+
+function getBreedData() {
+    fetch(breedUrl)
+        .then(r => r.json())
+        .then(breedObject => {
+            // message is the key, breed is the value object.keys or for in
+            // get list of keys, Object.keys gts you only in one level of the data object, so we needed to do .message to get the values of the message keys.
+            const breedObjKeyArray = Object.keys(breedObject.message)
+            breedObjKeyArray.forEach(breed => {
+                const breedUL = document.getElementById("dogBreeds")
+                const li = document.createElement('li')
+                li.addEventListener('click', () => {
+                    li.preventDefault()
+                    li.style = ''
+
+                })
+                li.innerText = breed
+                breedUL.append(li)
+            })
+        })
+}
+
+
+
