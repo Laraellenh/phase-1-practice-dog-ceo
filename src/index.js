@@ -32,9 +32,9 @@ function getBreedData() {
             breedObjKeyArray.forEach(breed => {
                 const breedUL = document.getElementById("dogBreeds")
                 const li = document.createElement('li')
-                li.addEventListener('click', () => {
-                    li.preventDefault()
-                    li.style = ''
+                li.addEventListener('click', (event) => {
+                    event.preventDefault()
+                    li.style = 'color: firebrick'
 
                 })
                 li.innerText = breed
